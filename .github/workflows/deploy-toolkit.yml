@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'toolkit/**/*'
+      - 'pythonit_toolkit/**/*'
   workflow_dispatch:
     inputs:
       comment-id:
