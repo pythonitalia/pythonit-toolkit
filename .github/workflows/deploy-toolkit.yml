@@ -56,17 +56,14 @@ jobs:
             Releasing commit [${{ steps.metadata.outputs.commit }}] to PyPi as pre-release! :package:
           edit-mode: replace
       - name: Update version
-        working-directory: ./toolkit
         if: ${{ github.ref == 'refs/heads/main' }}
         run: poetry version patch
       - name: Update to pre-release version
-        working-directory: ./toolkit
         if: ${{ github.ref != 'refs/heads/main' }}
         run: |
           poetry version patch
           poetry version $(poetry version -s)-dev.$(date '+%s')
       - name: Build & Publish
-        working-directory: ./toolkit
         id: release
         env:
           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
@@ -75,7 +72,6 @@ jobs:
           echo "::set-output name=version::$(poetry version -s)"
       - name: Commit version
         if: ${{ github.ref == 'refs/heads/main' }}
-        working-directory: ./toolkit
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
