@@ -26,12 +26,12 @@ jobs:
         with:
           persist-credentials: false
           ref: ${{ github.ref }}
-      - name: Install poetry
-        run: pip install poetry
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9.5
+      - name: Install poetry
+        run: pip install poetry
       - name: Metadata
         id: metadata
         run: echo "::set-output name=commit::$(git rev-parse HEAD)"
