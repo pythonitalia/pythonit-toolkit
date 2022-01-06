@@ -81,13 +81,13 @@ async def _():
 @test("Generate a service to service token")
 async def _():
     with time_machine.travel("2021-11-13 18:41:10", tick=False):
-
         token = generate_service_to_service_token("secret", issuer="me", audience="you")
 
-        assert (
-            token
-            == "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJtZSIsImF1ZCI6InlvdSIsImlhdCI6MTYzNjgyODg3MCwiZXhwIjoxNjM2ODI4OTMwfQ.LnS-GDGazo6q5-54h9oGCmixRwA84QJX7I-TnU3gEvI"
-        )
+    with time_machine.travel("2021-11-13 18:41:50", tick=False):
+        decode_service_to_service_token(token, secret="secret", issuer="me", audience="you")
+
+    with time_machine.travel("2021-11-13 18:43:10", tick=False), raises(jwt.ExpiredSignatureError):
+        decode_service_to_service_token(token, secret="secret", issuer="me", audience="you")
 
 
 @test("Secret is required when creating a service-to-service token")
