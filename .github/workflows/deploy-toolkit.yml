@@ -8,6 +8,7 @@ on:
       - main
     paths:
       - 'pythonit_toolkit/**/*'
+      - 'pyproject.toml'
   workflow_dispatch:
     inputs:
       comment-id:
