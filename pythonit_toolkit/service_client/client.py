@@ -42,7 +42,7 @@ class ServiceClient:
             self.jwt_secret, issuer=self.caller, audience=self.service_name
         )
 
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(timeout=10) as client:
             response = await client.post(
                 self.url,
                 json={"query": document, "variables": variables},
