@@ -1,5 +1,7 @@
 name: Toolkit Library Deploy
 
+concurrency: deploy
+
 on:
   push:
     branches:
