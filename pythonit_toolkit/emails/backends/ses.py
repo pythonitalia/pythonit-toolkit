@@ -1,6 +1,6 @@
 import json
 from typing import Optional
-
+import html
 import boto3
 from pythonit_toolkit.emails.templates import EmailTemplate
 
@@ -21,10 +21,13 @@ class SESEmailBackend(EmailBackend):
         to: str,
         variables: Optional[dict[str, str]] = None,
     ):
-        variables = {"subject": subject, **(variables or {})}
+        variables = self.encode_vars({"subject": subject, **(variables or {})})
         self.ses.send_templated_email(
             Source=from_,
             Destination={"ToAddresses": [to]},
             Template=f"pythonit-{self.environment}-{template}",
             TemplateData=json.dumps(variables),
         )
+
+    def encode_vars(self, variables: dict[str, str]) -> dict[str, str]:
+        return {key: html.escape(value) for key, value in variables.items()}
