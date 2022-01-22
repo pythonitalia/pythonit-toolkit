@@ -41,6 +41,7 @@ async def _():
         TemplateData='{"subject": "Subject"}',
     )
 
+
 @test("variables are html encoded")
 async def _():
     with patch("pythonit_toolkit.emails.backends.ses.boto3") as mock_boto:
@@ -49,7 +50,9 @@ async def _():
             subject="Subject",
             from_="test@email.it",
             to="destination@email.it",
-            variables={"a": '<a href="https://google.it">link</a>',},
+            variables={
+                "a": '<a href="https://google.it">link</a>',
+            },
         )
 
     mock_boto.client.return_value.send_templated_email.assert_called_once_with(

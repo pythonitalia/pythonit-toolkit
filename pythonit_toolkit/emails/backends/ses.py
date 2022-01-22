@@ -30,6 +30,4 @@ class SESEmailBackend(EmailBackend):
         )
 
     def encode_vars(self, variables: dict[str, str]) -> dict[str, str]:
-        return {
-            key: html.escape(value) for key, value in variables.items()
-        }
+        return {key: html.escape(value) for key, value in variables.items()}
