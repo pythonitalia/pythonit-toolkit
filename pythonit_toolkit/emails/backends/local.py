@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Dict, List, Optional
 
 from pythonit_toolkit.emails.templates import EmailTemplate
 
@@ -16,12 +16,16 @@ class LocalEmailBackend(EmailBackend):
         subject: str,
         from_: str,
         to: str,
-        variables: Optional[dict[str, str]] = None,
+        variables: Optional[Dict[str, str]] = None,
+        reply_to: List[str] = None,
     ):
+        reply_to = reply_to or []
+
         print("=== Email sending ===")
         print(f"Template: {template}")
         print(f"From: {from_}")
         print(f"To: {to}")
         print(f"Subject: {subject}")
         print(f"Variables: {str(variables)}")
+        print(f"Reply to: {str(reply_to)}")
         print("=== End Email sending ===")

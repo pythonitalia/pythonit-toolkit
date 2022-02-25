@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Optional
+from typing import Dict, List, Optional
 
 from pythonit_toolkit.emails.templates import EmailTemplate
 
@@ -16,6 +16,7 @@ class EmailBackend(ABC):
         subject: str,
         from_: str,
         to: str,
-        variables: Optional[dict[str, str]] = None
+        variables: Optional[Dict[str, str]] = None,
+        reply_to: List[str] = None
     ):
         pass
