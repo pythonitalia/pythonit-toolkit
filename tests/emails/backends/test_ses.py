@@ -21,6 +21,7 @@ async def _():
         Destination={"ToAddresses": ["destination@email.it"]},
         Template="pythonit-production-reset-password",
         TemplateData='{"subject": "Subject", "a": "b", "c": "d"}',
+        ReplyToAddresses=[],
     )
 
 
@@ -39,6 +40,33 @@ async def _():
         Destination={"ToAddresses": ["destination@email.it"]},
         Template="pythonit-production-reset-password",
         TemplateData='{"subject": "Subject"}',
+        ReplyToAddresses=[],
+    )
+
+
+@test("send email with reply to")
+async def _():
+    with patch("pythonit_toolkit.emails.backends.ses.boto3") as mock_boto:
+        SESEmailBackend("production").send_email(
+            template=EmailTemplate.RESET_PASSWORD,
+            subject="Subject",
+            from_="test@email.it",
+            to="destination@email.it",
+            reply_to=[
+                "test1@placeholder.com",
+                "test2@placeholder.com",
+            ]
+        )
+
+    mock_boto.client.return_value.send_templated_email.assert_called_once_with(
+        Source="test@email.it",
+        Destination={"ToAddresses": ["destination@email.it"]},
+        Template="pythonit-production-reset-password",
+        TemplateData='{"subject": "Subject"}',
+        ReplyToAddresses=[
+            "test1@placeholder.com",
+            "test2@placeholder.com",
+        ],
     )
 
 
@@ -60,4 +88,5 @@ async def _():
         Destination={"ToAddresses": ["destination@email.it"]},
         Template="pythonit-production-reset-password",
         TemplateData='{"subject": "Subject", "a": "&lt;a href=&quot;https://google.it&quot;&gt;link&lt;/a&gt;"}',
+        ReplyToAddresses=[],
     )
