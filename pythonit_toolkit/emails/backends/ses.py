@@ -31,6 +31,7 @@ class SESEmailBackend(EmailBackend):
             Template=f"pythonit-{self.environment}-{template}",
             TemplateData=json.dumps(variables),
             ReplyToAddresses=reply_to,
+            ConfigurationSetName='primary',
         )
 
     def encode_vars(self, variables: dict[str, str]) -> dict[str, str]:

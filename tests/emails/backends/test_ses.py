@@ -22,6 +22,7 @@ async def _():
         Template="pythonit-production-reset-password",
         TemplateData='{"subject": "Subject", "a": "b", "c": "d"}',
         ReplyToAddresses=[],
+        ConfigurationSetName='primary',
     )
 
 
@@ -41,6 +42,7 @@ async def _():
         Template="pythonit-production-reset-password",
         TemplateData='{"subject": "Subject"}',
         ReplyToAddresses=[],
+        ConfigurationSetName='primary',
     )
 
 
@@ -67,6 +69,7 @@ async def _():
             "test1@placeholder.com",
             "test2@placeholder.com",
         ],
+        ConfigurationSetName='primary',
     )
 
 
@@ -89,4 +92,5 @@ async def _():
         Template="pythonit-production-reset-password",
         TemplateData='{"subject": "Subject", "a": "&lt;a href=&quot;https://google.it&quot;&gt;link&lt;/a&gt;"}',
         ReplyToAddresses=[],
+        ConfigurationSetName='primary',
     )
