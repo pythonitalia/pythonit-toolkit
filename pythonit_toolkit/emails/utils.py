@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 import importlib
 
 from .backends.base import EmailBackend
@@ -18,3 +19,18 @@ def get_email_backend(backend_path: str, **options: dict[str, str]) -> EmailBack
         EMAIL_BACKEND_CACHE[backend_path] = instance
 
     return instance
+
+
+@dataclass
+class SafeString(str):
+    original_str: str
+
+    def __str__(self) -> str:
+        return self.original_str
+
+
+def mark_safe(string: str) -> SafeString:
+    if string is None:
+        raise ValueError("string cannot be None")
+
+    return SafeString(string)
