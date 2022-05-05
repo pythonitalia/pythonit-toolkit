@@ -3,6 +3,7 @@ from typing import Dict, List, Optional
 import html
 import boto3
 from pythonit_toolkit.emails.templates import EmailTemplate
+from pythonit_toolkit.emails.utils import SafeString
 
 from .base import EmailBackend
 
@@ -35,4 +36,12 @@ class SESEmailBackend(EmailBackend):
         )
 
     def encode_vars(self, variables: dict[str, str]) -> dict[str, str]:
-        return {key: html.escape(value) for key, value in variables.items()}
+        vars = dict()
+
+        for key, value in variables.items():
+            if not isinstance(value, SafeString):
+                value = html.escape(value)
+
+            vars[key] = str(value)
+
+        return vars
