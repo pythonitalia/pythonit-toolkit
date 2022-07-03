@@ -14,7 +14,7 @@ def fake_pastaporto_token_for_user(
     now = datetime.now(timezone.utc)
     return jwt.encode(
         {
-            "userInfo": {"id": user["id"], "email": user["email"], "isStaff": staff},
+            "user_info": {"id": user["id"], "email": user["email"], "is_staff": staff},
             "credentials": credentials,
             "exp": now + timedelta(minutes=1),
             "iat": now,

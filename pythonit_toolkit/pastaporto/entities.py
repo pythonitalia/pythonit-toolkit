@@ -35,7 +35,7 @@ class PastaportoUserInfo:
 
     @classmethod
     def from_data(cls, data: dict[str, Any]):
-        return cls(id=int(data["id"]), email=data["email"], is_staff=data["isStaff"])
+        return cls(id=int(data["id"]), email=data["email"], is_staff=data["is_staff"])
 
 
 @dataclass
