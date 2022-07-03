@@ -18,7 +18,7 @@ def fake_pastaporto_token_for_user(
             "credentials": credentials,
             "exp": now + timedelta(minutes=1),
             "iat": now,
-            "iss": "gateway",
+            "iss": "users",
         },
         secret,
         algorithm="HS256",
