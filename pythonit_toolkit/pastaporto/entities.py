@@ -60,9 +60,13 @@ class Pastaporto:
         ):
             raise InvalidPastaportoError()
 
-        user_info = decoded_token.get("userInfo")
+        user_info = decoded_token.get("user_info")
         return cls(
-            user_info=PastaportoUserInfo.from_data(user_info) if user_info else None,
+            user_info=(
+                PastaportoUserInfo.from_data(user_info)
+                if user_info
+                else None
+            ),
             credentials=[
                 Credential(credential) for credential in decoded_token["credentials"]
             ],
