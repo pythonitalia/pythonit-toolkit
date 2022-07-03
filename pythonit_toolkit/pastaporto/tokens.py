@@ -8,7 +8,7 @@ def decode_pastaporto(token: str, secret: str) -> dict[str, Any]:
     return jwt.decode(
         token,
         str(secret),
-        issuer="gateway",
+        issuer="users",
         algorithms=["HS256"],
         options={"require": ["exp", "iss", "iat"]},
     )
