@@ -6,7 +6,7 @@ authors = ["Python Italia"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-PyJWT = "2.0.1"
+PyJWT = "2.4.0"
 starlette = {version = "^0.14.2", optional = true}
 strawberry-graphql = "*"
 pydantic = {version = "*", optional = true}
