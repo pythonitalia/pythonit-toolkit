@@ -2,6 +2,12 @@ from enum import Enum
 
 
 class EmailTemplate(str, Enum):
+    GRANT_APPROVED_TICKET_ONLY = "grant-approved-ticket-only"
+    GRANT_APPROVED_TICKET_ACCOMMODATION = "grant-approved-ticket-accommodation"
+    GRANT_APPROVED_TICKET_TRAVEL_ACCOMMODATION = "grant-approved-ticket-travel-accommodation"
+    GRANT_REPLY_APPLICANT_NEED_MORE_INFO = "grant-reply-applicant-need-more-info"
+    GRANT_WAITING_LIST = "grant-waiting-list"
+    GRANT_REJECTED = "grant-rejected"
     RESET_PASSWORD = "reset-password"
     NEW_COMMENT_ON_SUBMISSION = "new-comment-on-submission"
     SUBMISSION_ACCEPTED = "submission-accepted"
