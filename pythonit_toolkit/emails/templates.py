@@ -4,6 +4,7 @@ from enum import Enum
 class EmailTemplate(str, Enum):
     GRANT_APPROVED_TICKET_ONLY = "grant-approved-ticket-only"
     GRANT_APPROVED_TICKET_ACCOMMODATION = "grant-approved-ticket-accommodation"
+    GRANT_APPROVED_TICKET_TRAVEL = "grant-approved-ticket-travel"
     GRANT_APPROVED_TICKET_TRAVEL_ACCOMMODATION = "grant-approved-ticket-travel-accommodation"
     GRANT_REPLY_APPLICANT_NEED_MORE_INFO = "grant-reply-applicant-need-more-info"
     GRANT_WAITING_LIST = "grant-waiting-list"
