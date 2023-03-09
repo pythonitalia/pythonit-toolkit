@@ -1,5 +1,5 @@
 import json
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 import html
 import boto3
 from pythonit_toolkit.emails.templates import EmailTemplate
@@ -35,13 +35,13 @@ class SESEmailBackend(EmailBackend):
             ConfigurationSetName='primary',
         )
 
-    def encode_vars(self, variables: dict[str, str]) -> dict[str, str]:
+    def encode_vars(self, variables: dict[str, Any]) -> dict[str, Any]:
         vars = dict()
 
         for key, value in variables.items():
-            if not isinstance(value, SafeString):
+            if isinstance(value, str) and not isinstance(value, SafeString):
                 value = html.escape(value)
 
-            vars[key] = str(value)
+            vars[key] = value
 
         return vars
