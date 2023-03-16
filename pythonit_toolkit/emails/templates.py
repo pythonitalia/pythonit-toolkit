@@ -8,6 +8,7 @@ class EmailTemplate(str, Enum):
     GRANT_APPROVED_TICKET_TRAVEL_ACCOMMODATION = "grant-approved-ticket-travel-accommodation"
     GRANT_REPLY_APPLICANT_NEED_MORE_INFO = "grant-reply-applicant-need-more-info"
     GRANT_WAITING_LIST = "grant-waiting-list"
+    GRANT_WAITING_LIST_UPDATE = "grant-waiting-list-update"
     GRANT_REJECTED = "grant-rejected"
     RESET_PASSWORD = "reset-password"
     NEW_COMMENT_ON_SUBMISSION = "new-comment-on-submission"
