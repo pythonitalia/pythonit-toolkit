@@ -15,6 +15,7 @@ sentry-sdk = "^1.28.1"
 httpx = "^0.24.1"
 
 [tool.poetry.group.dev.dependencies]
+starlette = "^0.30.0"
 ward = "^0.67.2b0"
 time-machine = "^2.11.0"
 pdbpp = "^0.10.3"
