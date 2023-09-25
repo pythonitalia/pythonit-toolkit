@@ -5,11 +5,11 @@ description = ""
 authors = ["Python Italia"]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.8,<4.0.0"
 PyJWT = "^2.8.0"
-starlette = {version = "^0.30.0", optional = true}
+starlette = { version = "^0.30.0", optional = true }
 strawberry-graphql = "*"
-pydantic = {version = "*", optional = true}
+pydantic = { version = "*", optional = true }
 boto3 = "^1.28.9"
 sentry-sdk = "^1.28.1"
 httpx = "^0.24.1"
