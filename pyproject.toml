@@ -12,7 +12,7 @@ strawberry-graphql = "*"
 pydantic = { version = "*", optional = true }
 boto3 = "^1.28.9"
 sentry-sdk = "^1.28.1"
-httpx = "^0.24.1"
+httpx = "^0.25.1"
 
 [tool.poetry.group.dev.dependencies]
 starlette = "^0.30.0"
