@@ -22,11 +22,11 @@ class SESEmailBackend(EmailBackend):
         to: str,
         variables: Optional[Dict[str, str]] = None,
         reply_to: List[str] = None,
-    ):
+    ) -> str:
         reply_to = reply_to or []
 
         variables = self.encode_vars({"subject": subject, **(variables or {})})
-        self.ses.send_templated_email(
+        response = self.ses.send_templated_email(
             Source=from_,
             Destination={"ToAddresses": [to]},
             Template=f"pythonit-{self.environment}-{template}",
@@ -34,6 +34,7 @@ class SESEmailBackend(EmailBackend):
             ReplyToAddresses=reply_to,
             ConfigurationSetName='primary',
         )
+        return response['MessageId']
 
     def encode_vars(self, variables: dict[str, Any]) -> dict[str, Any]:
         vars = dict()

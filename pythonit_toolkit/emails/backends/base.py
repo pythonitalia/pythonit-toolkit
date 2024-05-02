@@ -18,5 +18,5 @@ class EmailBackend(ABC):
         to: str,
         variables: Optional[Dict[str, str]] = None,
         reply_to: List[str] = None
-    ):
+    ) -> str:
         pass
