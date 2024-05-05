@@ -1,4 +1,5 @@
 from typing import Dict, List, Optional
+from uuid import uuid4
 
 from pythonit_toolkit.emails.templates import EmailTemplate
 
@@ -18,7 +19,7 @@ class LocalEmailBackend(EmailBackend):
         to: str,
         variables: Optional[Dict[str, str]] = None,
         reply_to: List[str] = None,
-    ):
+    ) -> str:
         reply_to = reply_to or []
 
         print("=== Email sending ===")
@@ -29,3 +30,5 @@ class LocalEmailBackend(EmailBackend):
         print(f"Variables: {str(variables)}")
         print(f"Reply to: {str(reply_to)}")
         print("=== End Email sending ===")
+
+        return f'messageid-{uuid4()}'
